@@ -33,6 +33,14 @@
 ;;; Evil mode
 (require 'rational-evil)        ; An `evil-mode` configuration
 
+;; Set configuration variables
+(custom-set-variables '(rational-evil-discourage-arrow-keys t)
+                      '(evil-want-C-u-scroll t))
+
+;; Set preferred key bindings
+(global-set-key (kbd "M-/") 'evilnc-comment-or-uncomment-lines)
+(global-set-key (kbd "C-M-u") 'universal-argument)
+
 ;;; Completions and Actions
 (require 'rational-completion)  ; selection framework based on `vertico`
 
