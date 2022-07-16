@@ -45,7 +45,6 @@
 ;;; Project Management
 (require 'rational-project)
 
-;; (require 'rational-use-package) ; Configuration for `use-package`
 (require 'rational-editing)     ; Whitspace trimming, auto parens etc.
 
 ;; ;;; config.el ends here
