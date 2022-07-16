@@ -33,9 +33,13 @@
 ;; Set preferred key bindings
 (global-set-key (kbd "M-/") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "C-M-u") 'universal-argument)
+(global-set-key (kbd "C-M-j") 'consult-buffer)
 
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
+
+(define-key minibuffer-local-map (kbd "C-d") 'embark-act)
+(define-key project-prefix-map (kbd "g") 'consult-ripgrep)
 
 ;;; Source Control
 (crafted-package-install-package 'magit)
@@ -45,6 +49,9 @@
 ;;; Project Management
 (require 'crafted-project)
 
+(define-key project-prefix-map (kbd "g") 'consult-ripgrep)
+
+;;; Buffer editing
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
 ;; ;;; config.el ends here
