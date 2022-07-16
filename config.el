@@ -16,13 +16,6 @@
 ;;; User Interface
 (require 'rational-ui)
 
-;; Setup motus themes
-;; Add all your customizations prior to loading the themes
-(setq modus-themes-italic-constructs t
-      modus-themes-bold-constructs nil
-      modus-themes-region '(bg-only))
-(load-theme 'modus-vivendi t)
-
 ;; Install minions
 (rational-package-install-package 'minions)
 (add-hook 'doom-modeline-mode-hook 'minions-mode)
