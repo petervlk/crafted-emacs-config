@@ -54,7 +54,6 @@
 ;;; Buffer editing
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
-;; ;;; config.el ends here
 ;;; Language server protocol
 (crafted-package-install-package 'lsp-mode)
 
@@ -73,5 +72,22 @@
   '(lsp-ui-doc-childframe nil))
 
 (crafted-package-install-package 'flycheck)
+
+;;; Clojure
+
+;; Global defaults
+(require 'eldoc)
+;; keeps code indented even when copy/pasting.
+(crafted-package-install-package 'aggressive-indent)
+
+(crafted-package-install-package 'cider)
+
+(crafted-package-install-package 'clojure-mode)
+
+(add-hook 'clojure-mode #'aggressive-indent-mode)
+(add-hook 'clojure-mode (lambda () (modify-syntax-entry ?- "w")))
+(add-hook 'clojure-mode-hook 'lsp)
+(add-hook 'clojurescript-mode-hook 'lsp)
+(add-hook 'clojurec-mode-hook 'lsp)
 
 ;;; config.el ends here
