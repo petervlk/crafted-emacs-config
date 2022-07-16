@@ -23,6 +23,10 @@
       modus-themes-region '(bg-only))
 (load-theme 'modus-vivendi t)
 
+;; Install minions
+(rational-package-install-package 'minions)
+(add-hook 'doom-modeline-mode-hook 'minions-mode)
+
 ;;; Evil mode
 (require 'rational-evil)        ; An `evil-mode` configuration
 
