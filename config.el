@@ -47,6 +47,5 @@
 
 ;; (require 'rational-use-package) ; Configuration for `use-package`
 (require 'rational-editing)     ; Whitspace trimming, auto parens etc.
-(require 'rational-compile)     ; automatically compile some emacs lisp files
 
 ;; ;;; config.el ends here
