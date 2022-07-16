@@ -55,3 +55,23 @@
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
 ;; ;;; config.el ends here
+;;; Language server protocol
+(crafted-package-install-package 'lsp-mode)
+
+(setq lsp-eldoc-enable-hover t
+      lsp-signature-auto-activate nil
+      lsp-headerline-breadcrumb-enable nil
+      lsp-lens-enable t)
+
+
+(crafted-package-install-package 'lsp-ui)
+
+(custom-set-variables
+  '(lsp-ui-doc-enable t)
+  '(lsp-ui-doc-show-with-mouse nil)
+  '(lsp-ui-doc-show-with-cursor nil)
+  '(lsp-ui-doc-childframe nil))
+
+(crafted-package-install-package 'flycheck)
+
+;;; config.el ends here
