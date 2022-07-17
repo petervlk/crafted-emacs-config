@@ -46,6 +46,9 @@
 (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 (global-set-key (kbd "C-M-;") #'magit-status)
 
+(crafted-package-install-package 'magit-delta)
+(add-hook 'magit-mode-hook 'magit-delta-mode)
+
 ;;; Project Management
 (require 'crafted-project)
 
