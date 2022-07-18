@@ -85,6 +85,20 @@
 
 (crafted-package-install-package 'cider)
 
+;; add cider xref backend with lower priority than lsp when connected
+(defvar-local cider-lsp-xref-fns
+    (mapcar (lambda (fn)
+              `(lambda ()
+                 (and (fboundp ',fn)
+                      (funcall ',fn))))
+            `(cider--xref-backend
+              lsp--xref-backend)))
+
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (mapc (lambda (fn)
+                    (add-hook 'xref-backend-functions fn nil t))
+                  cider-lsp-xref-fns)))
 (crafted-package-install-package 'clojure-mode)
 
 (add-hook 'clojure-mode #'aggressive-indent-mode)
