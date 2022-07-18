@@ -54,6 +54,8 @@
 (crafted-package-install-package 'magit-delta)
 (add-hook 'magit-mode-hook 'magit-delta-mode)
 
+(crafted-package-install-package 'git-timemachine)
+
 ;;; Project Management
 (require 'crafted-project)
 
