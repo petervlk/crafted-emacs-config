@@ -13,6 +13,11 @@
 
 (require 'crafted-defaults)    ; Sensible default settings for Emacs
 
+;;; Litering
+(crafted-package-install-package 'no-littering)
+(setq auto-save-file-name-transforms
+      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
 ;;; User Interface
 (require 'crafted-ui)
 
