@@ -13,6 +13,9 @@
 
 (require 'crafted-defaults)    ; Sensible default settings for Emacs
 
+;; Set load path
+(add-to-list 'load-path (expand-file-name "~/.config/crafted-emacs/lisp"))
+
 ;;; Litering
 (crafted-package-install-package 'no-littering)
 (setq auto-save-file-name-transforms
@@ -91,6 +94,8 @@
 (crafted-package-install-package 'aggressive-indent)
 
 (crafted-package-install-package 'cider)
+(require 'cljstyle-mode)
+(add-hook 'clojure-mode-hook #'cljstyle-mode)
 
 ;; add cider xref backend with lower priority than lsp when connected
 (defvar-local cider-lsp-xref-fns
