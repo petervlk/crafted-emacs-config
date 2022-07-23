@@ -95,6 +95,10 @@
 
 (crafted-package-install-package 'cider)
 (require 'cljstyle-mode)
+
+(add-hook 'clojure-mode-hook    (lambda () (modify-syntax-entry ?- "w")))
+(add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
+
 (add-hook 'clojure-mode-hook #'cljstyle-mode)
 
 ;; add cider xref backend with lower priority than lsp when connected
