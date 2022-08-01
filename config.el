@@ -24,6 +24,8 @@
 ;;; User Interface
 (require 'crafted-ui)
 
+(customize-set-variable 'doom-modeline-buffer-file-name-style 'relative-from-project)
+
 ;; Install minions
 (crafted-package-install-package 'minions)
 (add-hook 'doom-modeline-mode-hook 'minions-mode)
