@@ -140,5 +140,7 @@
                     (add-hook 'xref-backend-functions fn nil t))
                   cider-lsp-xref-fns)))
 
+;;; Org mode
+(require 'crafted-org)
 
 ;;; config.el ends here
