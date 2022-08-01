@@ -31,8 +31,8 @@
 (add-hook 'doom-modeline-mode-hook 'minions-mode)
 
 ;; Set config variables
-(custom-set-variables '(crafted-ui-display-line-numbers t))
-
+(custom-set-variables '(crafted-ui-display-line-numbers t)
+                      '(crafted-startup-inhibit-splash t))
 ;;; Evil mode
 (require 'crafted-evil)        ; An `evil-mode` configuration
 
