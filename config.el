@@ -94,6 +94,7 @@
 
 (crafted-package-install-package 'flycheck)
 (crafted-package-install-package 'lsp-treemacs)
+(crafted-package-install-package 'consult-lsp)
 
 ;;; Clojure
 
