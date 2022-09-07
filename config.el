@@ -142,5 +142,6 @@
 
 ;;; Org mode
 (require 'crafted-org)
+(setq org-ellipsis " ▾")
 
 ;;; config.el ends here
