@@ -69,6 +69,9 @@
 
 (define-key project-prefix-map (kbd "g") 'consult-ripgrep)
 
+;; Make it possible to ignore risky local variables
+(advice-add 'risky-local-variable-p :override #'ignore)
+
 ;;; Buffer editing
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
