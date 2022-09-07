@@ -24,6 +24,9 @@
 ;;; User Interface
 (require 'crafted-ui)
 
+;; Show column position in mode-line
+(column-number-mode t)
+
 (customize-set-variable 'doom-modeline-buffer-file-name-style 'relative-from-project)
 
 ;; Install minions
