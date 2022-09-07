@@ -106,6 +106,21 @@
 (crafted-package-install-package 'consult-lsp)
 
 ;;; Clojure
+;;; Structural editing
+(crafted-package-install-package 'lispy)
+(crafted-package-install-package 'lispyville)
+
+(with-eval-after-load 'lispyville
+  (lispyville-set-key-theme
+   '(operators
+     c-w
+     slurp/barf-cp
+     (additional-wrap normal visual insert)
+     (escape insert)
+     (additional-movement normal visual motion))))
+
+(add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+(add-hook 'lispy-mode-hook #'lispyville-mode)
 
 ;; Global defaults
 (require 'eldoc)
@@ -122,10 +137,10 @@
 
 ;; (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 ;; (add-hook 'clojure-mode-hook #'cljstyle-mode)
+(add-hook 'clojure-mode-hook #'lispy-mode)
 (add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)
 (add-hook 'clojurec-mode-hook 'lsp)
-;; (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
 
 ;; (defun cider--prefer-lsp-xref-h ()
 ;;   (dolist (buffer (buffer-list))
