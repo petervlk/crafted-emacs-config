@@ -54,6 +54,9 @@
 (global-set-key (kbd "C-M-u") 'universal-argument)
 (global-set-key (kbd "C-M-j") 'consult-buffer)
 
+(define-key evil-motion-state-map (kbd "[ j") 'evil-jump-backward)
+(define-key evil-motion-state-map (kbd "] j") 'evil-jump-forward)
+
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
 
