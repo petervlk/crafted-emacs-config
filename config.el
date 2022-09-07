@@ -93,6 +93,7 @@
   '(lsp-ui-doc-childframe nil))
 
 (crafted-package-install-package 'flycheck)
+(crafted-package-install-package 'lsp-treemacs)
 
 ;;; Clojure
 
