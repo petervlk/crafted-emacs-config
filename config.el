@@ -47,7 +47,7 @@
 
 ;; Set configuration variables
 (custom-set-variables '(crafted-evil-discourage-arrow-keys t)
-                      '(evil-want-C-u-scroll t))
+                      '(evil-want-C-u-scroll nil))
 
 ;; Set preferred key bindings
 (global-set-key (kbd "M-/") 'evilnc-comment-or-uncomment-lines)
