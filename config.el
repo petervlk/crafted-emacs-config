@@ -117,7 +117,9 @@
      slurp/barf-cp
      (additional-wrap normal visual insert)
      (escape insert)
-     (additional-movement normal visual motion))))
+     ;; need to resolve conflicts with unimpaired-like key bindings
+     ;; (additional-movement normal visual motion)
+     atom-movement)))
 
 (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
 (add-hook 'lispy-mode-hook #'lispyville-mode)
@@ -132,8 +134,8 @@
 (setq clojure-align-forms-automatically t
       clojure-indent-style 'align-arguments)
 
-(add-hook 'clojure-mode-hook    (lambda () (modify-syntax-entry ?- "w")))
-(add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
+;; (add-hook 'clojure-mode-hook    (lambda () (modify-syntax-entry ?- "w")))
+;; (add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
 
 ;; (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 ;; (add-hook 'clojure-mode-hook #'cljstyle-mode)
