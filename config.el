@@ -13,8 +13,14 @@
 
 (require 'crafted-defaults)    ; Sensible default settings for Emacs
 
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024))
+
 ;; Set load path
 (add-to-list 'load-path (expand-file-name "~/.config/crafted-emacs/lisp"))
+
+;; Turn on visual line mode for text modes
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;;; Litering
 (crafted-package-install-package 'no-littering)
