@@ -106,9 +106,7 @@
 
 ;; Global defaults
 (require 'eldoc)
-;; keeps code indented even when copy/pasting.
 (crafted-package-install-package 'aggressive-indent)
-
 (crafted-package-install-package 'cider)
 (crafted-package-install-package 'clojure-mode)
 (require 'cljstyle-mode)
