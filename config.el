@@ -47,6 +47,7 @@
 
 ;; Set configuration variables
 (custom-set-variables '(crafted-evil-discourage-arrow-keys t)
+                      '(evil-want-minibuffer t)
                       '(evil-want-C-u-scroll nil))
 
 ;; Set preferred key bindings
