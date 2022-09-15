@@ -132,6 +132,10 @@
 (add-hook 'clojure-mode-hook    (lambda () (modify-syntax-entry ?- "w")))
 (add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
 
+(defun pv-cider-format-buffer ()
+  (interactive)
+  (and (bound-and-true-p cider-mode) (cider-format-buffer)))
+
 ;; (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 ;; (add-hook 'clojure-mode-hook #'cljstyle-mode)
 (add-hook 'clojure-mode-hook 'lsp)
