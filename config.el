@@ -96,6 +96,20 @@
 ;;; Buffer editing
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
+;;; Lisp family languages config
+(require 'crafted-lisp)
+
+;;; Clojure
+(require 'cljstyle-mode)
+
+(setq clojure-align-forms-automatically t
+      clojure-indent-style 'align-arguments)
+
+;;; Cider
+(defun pv-cider-format-buffer ()
+  (interactive)
+  (and (bound-and-true-p cider-mode) (cider-format-buffer)))
+
 ;;; Language server protocol
 (crafted-package-install-package 'lsp-mode)
 
@@ -103,7 +117,6 @@
       lsp-signature-auto-activate nil
       lsp-headerline-breadcrumb-enable nil
       lsp-lens-enable t)
-
 
 (crafted-package-install-package 'lsp-ui)
 
@@ -116,60 +129,6 @@
 (crafted-package-install-package 'flycheck)
 (crafted-package-install-package 'lsp-treemacs)
 (crafted-package-install-package 'consult-lsp)
-
-;;; Clojure
-
-;; Global defaults
-(require 'eldoc)
-(crafted-package-install-package 'aggressive-indent)
-(crafted-package-install-package 'cider)
-(crafted-package-install-package 'clojure-mode)
-(require 'cljstyle-mode)
-
-(setq clojure-align-forms-automatically t
-      clojure-indent-style 'align-arguments)
-
-(add-hook 'clojure-mode-hook    (lambda () (modify-syntax-entry ?- "w")))
-(add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
-
-(defun pv-cider-format-buffer ()
-  (interactive)
-  (and (bound-and-true-p cider-mode) (cider-format-buffer)))
-
-;; (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
-;; (add-hook 'clojure-mode-hook #'cljstyle-mode)
-(add-hook 'clojure-mode-hook 'lsp)
-(add-hook 'clojurescript-mode-hook 'lsp)
-(add-hook 'clojurec-mode-hook 'lsp)
-;; (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
-
-;; (defun cider--prefer-lsp-xref-h ()
-;;   (dolist (buffer (buffer-list))
-;;     (with-current-buffer buffer
-;;       (when (and (derived-mode-p 'clojure-mode)
-;;                  (bound-and-true-p cider-use-xref)
-;;                  (bound-and-true-p lsp-enable-xref))
-;;         (remove-hook 'xref-backend-functions #'cider--xref-backend :local)
-;;         (remove-hook 'xref-backend-functions #'lsp--xref-backend :local)
-;;         (add-hook 'xref-backend-functions #'cider--xref-backend nil :local)
-;;         (add-hook 'xref-backend-functions #'lsp--xref-backend nil :local)))))
-;;
-;; (add-hook 'cider-connected-hook #'cider--prefer-lsp-xref-h)
-
-;; add cider xref backend with lower priority than lsp when connected
-(defvar-local cider-lsp-xref-fns
-    (mapcar (lambda (fn)
-              `(lambda ()
-                 (and (fboundp ',fn)
-                      (funcall ',fn))))
-            `(cider--xref-backend
-              lsp--xref-backend)))
-
-(add-hook 'clojure-mode-hook
-          (lambda ()
-            (mapc (lambda (fn)
-                    (add-hook 'xref-backend-functions fn nil t))
-                  cider-lsp-xref-fns)))
 
 ;;; Org mode
 (require 'crafted-org)
