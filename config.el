@@ -96,24 +96,12 @@
 ;;; Buffer editing
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
-;;; Lisp family languages config
-(require 'crafted-lisp)
-
-;;; Clojure
-(require 'cljstyle-mode)
-
-(setq clojure-align-forms-automatically t
-      clojure-indent-style 'align-arguments)
-
-;;; Cider
-(defun pv-cider-format-buffer ()
-  (interactive)
-  (and (bound-and-true-p cider-mode) (cider-format-buffer)))
-
 ;;; Language server protocol
 (crafted-package-install-package 'lsp-mode)
 
-(setq lsp-eldoc-enable-hover t
+(setq lsp-eldoc-enable-hover nil
+      lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+      lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
       lsp-signature-auto-activate nil
       lsp-headerline-breadcrumb-enable nil
       lsp-lens-enable t)
@@ -129,6 +117,22 @@
 (crafted-package-install-package 'flycheck)
 (crafted-package-install-package 'lsp-treemacs)
 (crafted-package-install-package 'consult-lsp)
+
+;;; Lisp family languages config
+(require 'crafted-lisp)
+
+;;; Clojure
+(require 'cljstyle-mode)
+
+(setq clojure-align-forms-automatically t
+      clojure-indent-style 'align-arguments)
+
+(add-hook 'clojure-mode-hook 'lsp)
+
+;;; Cider
+(defun pv-cider-format-buffer ()
+  (interactive)
+  (and (bound-and-true-p cider-mode) (cider-format-buffer)))
 
 ;;; Org mode
 (require 'crafted-org)
