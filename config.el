@@ -121,12 +121,38 @@
 ;;; Lisp family languages config
 (require 'crafted-lisp)
 
+;;; Structural editing
+(crafted-package-install-package 'smartparens)
+(require 'smartparens-config)
+
+(crafted-package-install-package 'evil-smartparens)
+
+(custom-set-variables
+ '(show-smartparens-global-mode t)
+ '(sp-navigate-interactive-always-progress-point t))
+
+(defun pv-smartparens-setup ()
+ (define-key smartparens-mode-map (kbd "M-s u") 'sp-splice-sexp)
+ (define-key smartparens-mode-map (kbd "M-s r") 'sp-raise-sexp)
+ (define-key smartparens-mode-map (kbd "M-s >") 'sp-forward-barf-sexp)
+ (define-key smartparens-mode-map (kbd "M-s <") 'sp-forward-slurp-sexp)
+ (define-key smartparens-mode-map (kbd "M-s w (") 'sp-wrap-round)
+ (define-key smartparens-mode-map (kbd "M-s w [") 'sp-wrap-square)
+ (define-key smartparens-mode-map (kbd "M-s w {") 'sp-wrap-curly))
+
+(add-hook 'smartparens-mode-hook #'pv-smartparens-setup)
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook #'evil-smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
+
 ;;; Clojure
 (require 'cljstyle-mode)
 
 (setq clojure-align-forms-automatically t
       clojure-indent-style 'align-arguments)
 
+(add-hook 'clojure-mode-hook #'evil-smartparens-mode)
+(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
 (add-hook 'clojure-mode-hook 'lsp)
 
 ;;; Cider
