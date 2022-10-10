@@ -160,6 +160,18 @@
   (interactive)
   (and (bound-and-true-p cider-mode) (cider-format-buffer)))
 
+;; fix completion in cider mode
+;; https://github.com/clojure-emacs/cider/pull/3226#issuecomment-1195082695
+(require 'orderless)
+(customize-set-variable 'completion-styles '(orderless basic))
+
+(add-hook 'cider-mode-hook
+          (lambda ()
+            (setq-local completion-at-point-functions
+                        `(,(cape-capf-properties #'cider-complete-at-point :exclusive 'no)
+                          cape-dabbrev
+                          cape-file))))
+
 ;;; Org mode
 (require 'crafted-org)
 (setq org-ellipsis " ▾")
