@@ -176,6 +176,12 @@
 (require 'crafted-org)
 (setq org-ellipsis " ▾")
 
+;;; Http Client
+(crafted-package-install-package 'verb)
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+
 ;;; YAML
 (crafted-package-install-package 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
