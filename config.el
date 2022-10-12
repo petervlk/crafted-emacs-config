@@ -58,6 +58,8 @@
 (define-key evil-motion-state-map (kbd "[ j") 'evil-jump-backward)
 (define-key evil-motion-state-map (kbd "] j") 'evil-jump-forward)
 
+(define-key evil-window-map (kbd "C-q") 'evil-quit)
+
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
 
