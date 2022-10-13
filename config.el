@@ -160,6 +160,9 @@
 (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
 (add-hook 'clojure-mode-hook 'lsp)
 
+;; accept kebab-case words
+(add-hook 'clojure-mode-hook (lambda () (modify-syntax-entry ?- "w")))
+
 ;;; Cider
 (defun pv-cider-format-buffer ()
   (interactive)
