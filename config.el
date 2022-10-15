@@ -147,6 +147,10 @@
 (add-hook 'emacs-lisp-mode-hook #'evil-smartparens-mode)
 (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
 
+
+(crafted-package-install-package 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
 ;;; Clojure
 (require 'cljstyle-mode)
 
