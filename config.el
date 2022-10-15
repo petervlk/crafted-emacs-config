@@ -54,6 +54,8 @@
 (global-set-key (kbd "M-/") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "C-M-u") 'universal-argument)
 (global-set-key (kbd "C-M-j") 'consult-buffer)
+(global-set-key (kbd "C-<return>") 'embark-act)
+
 
 (define-key evil-motion-state-map (kbd "[ j") 'evil-jump-backward)
 (define-key evil-motion-state-map (kbd "] j") 'evil-jump-forward)
@@ -65,6 +67,33 @@
 
 (define-key minibuffer-local-map (kbd "C-d") 'embark-act)
 (define-key project-prefix-map (kbd "g") 'consult-ripgrep)
+
+;; use TAB in minibuffer to switch to embark actions and back
+;; by https://karthinks.com/software/fifteen-ways-to-use-embark/
+(defun with-minibuffer-keymap (keymap)
+  (lambda (fn &rest args)
+    (minibuffer-with-setup-hook
+        (lambda ()
+          (use-local-map
+           (make-composed-keymap keymap (current-local-map))))
+      (apply fn args))))
+
+(defvar embark-completing-read-prompter-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-<return>") 'abort-recursive-edit)
+    map))
+
+(advice-add 'embark-completing-read-prompter :around
+            (with-minibuffer-keymap embark-completing-read-prompter-map))
+(define-key vertico-map (kbd "C-<return>") 'embark-act-with-completing-read)
+
+(defun embark-act-with-completing-read (&optional arg)
+  (interactive "P")
+  (let* ((embark-prompter 'embark-completing-read-prompter)
+         (act (propertize "Act" 'face 'highlight))
+         (embark-indicator (lambda (_keymap targets) nil)))
+    (embark-act arg)))
+;; elbow grease for embark -- end
 
 ;;; Source Control
 (crafted-package-install-package 'magit)
