@@ -210,9 +210,11 @@
 (add-hook 'cider-mode-hook
           (lambda ()
             (setq-local completion-at-point-functions
-                        `(,(cape-capf-properties #'cider-complete-at-point :exclusive 'no)
-                          cape-dabbrev
-                          cape-file))))
+                        (list
+                         (cape-super-capf
+                          (cape-capf-properties #'cider-complete-at-point :exclusive 'no)
+                          #'cape-dabbrev)
+                          #'cape-file))))
 
 ;;; Org mode
 (require 'crafted-org)
