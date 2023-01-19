@@ -126,6 +126,30 @@
 (with-eval-after-load 'project
   (add-hook 'project-find-functions #'pv-project-override))
 
+;; Jumpt between test and impl files
+(crafted-package-install-package 'toggle-test)
+
+(define-key project-prefix-map (kbd "t") 'tgt-toggle)
+
+;; stolen from https://gitlab.com/andreyorst/dotfiles/-/blob/master/.config/emacs/init.el
+(defun pv-tgt-local-setup (&optional spec)
+  (lambda ()
+    (when-let* ((root (project-current))
+                (project-root (project-root root)))
+      (setq-local
+       tgt-projects
+       `(((:root-dir ,project-root)
+          (:src-dirs ,(or (plist-get spec :src-dirs) "src"))
+          (:test-dirs ,(or (plist-get spec :test-dirs) "test"))
+          (:test-suffixes ,(plist-get spec :suffixes))
+          (:test-prefixes ,(plist-get spec :prefixes))))))))
+
+(dolist (hook '(clojure-mode-hook
+                clojurec-mode-hook
+                clojurescript-mode-hook))
+  (add-hook hook (pv-tgt-local-setup '(:suffixes "_test"))))
+
+
 ;;; Buffer editing
 (require 'crafted-editing)     ; Whitspace trimming, auto parens etc.
 
