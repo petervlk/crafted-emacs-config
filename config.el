@@ -227,6 +227,7 @@
 
 ;; accept kebab-case words
 (add-hook 'clojure-mode-hook (lambda () (modify-syntax-entry ?- "w")))
+(add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
 
 ;;; Cider
 (defun pv-cider-format-buffer ()
