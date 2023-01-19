@@ -61,11 +61,12 @@
 (global-set-key (kbd "C-M-j") 'consult-buffer)
 (global-set-key (kbd "C-<return>") 'embark-act)
 
-
 (define-key evil-motion-state-map (kbd "[ j") 'evil-jump-backward)
 (define-key evil-motion-state-map (kbd "] j") 'evil-jump-forward)
 
 (define-key evil-window-map (kbd "C-q") 'evil-quit)
+(define-key evil-window-map (kbd "C-d") 'dired-other-window)
+(define-key evil-window-map (kbd "C-M-j") 'consult-buffer-other-window)
 
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
