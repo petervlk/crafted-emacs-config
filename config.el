@@ -41,6 +41,7 @@
 
 ;; Set config variables
 (custom-set-variables '(crafted-ui-display-line-numbers t)
+                      '(crafted-ui-use-doom-modeline t)
                       '(crafted-startup-inhibit-splash t))
 ;;; Evil mode
 (require 'crafted-evil)        ; An `evil-mode` configuration
