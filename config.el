@@ -33,6 +33,9 @@
 ;; Show column position in mode-line
 (column-number-mode t)
 
+;; highlight current line
+(global-hl-line-mode t)
+
 (customize-set-variable 'doom-modeline-buffer-file-name-style 'relative-from-project)
 
 ;; Install minions
