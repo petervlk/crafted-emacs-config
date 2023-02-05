@@ -58,6 +58,8 @@
                       '(evil-want-minibuffer nil)
                       '(evil-want-C-u-scroll nil))
 
+(evil-set-initial-state 'Info-mode 'emacs)
+
 ;; Set preferred key bindings
 (global-set-key (kbd "M-/") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "C-M-u") 'universal-argument)
