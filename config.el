@@ -266,6 +266,8 @@
   (and (bound-and-true-p cider-mode) (cider-format-buffer)))
 
 ;; set default completion style for cider
+
+
 ;; this should help improve completion related performance
 (setq completion-category-defaults '((cider (styles basic))))
 
