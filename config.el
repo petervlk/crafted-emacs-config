@@ -220,8 +220,11 @@
 ;;; Clojure
 (require 'cljstyle-mode)
 
-;; cider-defun-at-point treats contents of comment block as top level functions
-(customize-set-variable 'clojure-toplevel-inside-comment-form t)
+(custom-set-variables
+ ;; cider-defun-at-point treats contents of comment block as top level functions
+ '(clojure-toplevel-inside-comment-form t)
+ ;; disable warning
+ '(cljr-warn-on-eval nil))
 
 (setq clojure-align-forms-automatically t
       clojure-indent-style 'align-arguments)
