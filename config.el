@@ -199,20 +199,43 @@
  '(show-smartparens-global-mode t)
  '(sp-navigate-interactive-always-progress-point t))
 
-(defun pv-smartparens-setup ()
- (define-key smartparens-mode-map (kbd "M-s u") 'sp-splice-sexp)
- (define-key smartparens-mode-map (kbd "M-s r") 'sp-raise-sexp)
- (define-key smartparens-mode-map (kbd "M-s >") 'sp-forward-barf-sexp)
- (define-key smartparens-mode-map (kbd "M-s <") 'sp-forward-slurp-sexp)
- (define-key smartparens-mode-map (kbd "M-s w (") 'sp-wrap-round)
- (define-key smartparens-mode-map (kbd "M-s w [") 'sp-wrap-square)
- (define-key smartparens-mode-map (kbd "M-s w {") 'sp-wrap-curly))
-
-(add-hook 'smartparens-mode-hook #'pv-smartparens-setup)
 (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 (add-hook 'emacs-lisp-mode-hook #'evil-smartparens-mode)
 (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
 
+(crafted-package-install-package 'hydra)
+
+(defhydra smartparens-hydra (:hint nil)
+  "
+  _w_: next        _>_: barf     _(_: wrap raound    _u_: splice    _d_: kill    _j_: down sexp    _q_: quit
+  _W_: next lvl    _<_: slurp    _[_: wrap square    _r_: raise     _y_: copy    _k_: up sexp
+  _b_: prev                      _{_: wrap curly                    _Y_: copy
+  _B_: prev lvl
+  "
+  (">" sp-forward-barf-sexp)
+  ("<" sp-forward-slurp-sexp)
+
+  ("j" sp-down-sexp)
+  ("k" sp-backward-up-sexp)
+  ("w" sp-next-sexp)
+  ("W" sp-beginning-of-next-sexp)
+  ("b" sp-previous-sexp)
+  ("B" sp-beginning-of-previous-sexp)
+  ;; ("e" sp-end-of-next-sexp "End of Next sexp")
+
+  ("(" sp-wrap-round :color blue)
+  ("[" sp-wrap-square :color blue)
+  ("{" sp-wrap-curly :color blue)
+
+  ("u" sp-splice-sexp :color blue)
+  ("r" sp-raise-sexp  :color blue)
+
+  ("y" sp-copy-sexp  :color blue)
+  ("Y" sp-backwards-copy-sexp  :color blue)
+  ("d" sp-kill-sexp :color blue)
+  ("q" nil :color blue))
+
+(define-key smartparens-mode-map (kbd "M-s") 'smartparens-hydra/body)
 
 (crafted-package-install-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
