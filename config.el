@@ -248,6 +248,7 @@
 
 (add-hook 'cider-mode-hook
           (lambda ()
+            (define-key cider-mode-map (kbd "C-c M-l") #'cider-inspect-last-result)
             (setq-local completion-at-point-functions
                         (list
                          (cape-super-capf
