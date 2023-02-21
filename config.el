@@ -121,6 +121,8 @@
 ;;; Project Management
 (require 'crafted-project)
 
+;; random comment
+
 (define-key project-prefix-map (kbd "g") 'consult-ripgrep)
 
 ;; Make it possible to ignore risky local variables
