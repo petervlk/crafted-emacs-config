@@ -36,6 +36,9 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
+;; Install Modeline
+(crafted-package-install-package 'doom-modeline)
+(doom-modeline-mode 1)
 (customize-set-variable 'doom-modeline-buffer-file-name-style 'relative-from-project)
 
 ;; Install minions
