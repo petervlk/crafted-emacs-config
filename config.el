@@ -79,7 +79,9 @@
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
 
-(customize-set-variable 'corfu-auto-delay 0.2) ; Set delay for automatic completion
+(custom-set-variables
+ '(tab-always-indent 'complete)
+ '(corfu-auto nil))
 
 (define-key minibuffer-local-map (kbd "C-d") 'embark-act)
 (define-key project-prefix-map (kbd "g") 'consult-ripgrep)
