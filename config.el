@@ -246,7 +246,7 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;; Clojure
-(require 'cljstyle-mode)
+(crafted-package-install-package 'cljstyle-format)
 
 (custom-set-variables
  ;; cider-defun-at-point treats contents of comment block as top level functions
