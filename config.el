@@ -81,7 +81,12 @@
 
 (custom-set-variables
  '(tab-always-indent 'complete)
- '(corfu-auto nil))
+ '(corfu-auto nil)
+ ;; '(corfu-separator ?\s)               ;; Orderless field separator
+ ;; '(corfu-quit-at-boundary 'separator) ;; Never quit at completion boundary
+ ;; '(corfu-quit-no-match nil)           ;; Never quit, even if there is no match
+ ;; '(corfu-preselect-first nil)         ;; Disable candidate preselection
+ )
 
 (define-key minibuffer-local-map (kbd "C-d") 'embark-act)
 (define-key project-prefix-map (kbd "g") 'consult-ripgrep)
@@ -174,9 +179,11 @@
 ;;; Language server protocol
 (crafted-package-install-package 'lsp-mode)
 
+(custom-set-variables
+ '(lsp-completion-provider :none))
+
 (setq lsp-eldoc-enable-hover nil
       lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
-      lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
       lsp-signature-auto-activate nil
       lsp-headerline-breadcrumb-enable nil
       lsp-lens-enable t)
@@ -192,6 +199,9 @@
 (crafted-package-install-package 'flycheck)
 (crafted-package-install-package 'lsp-treemacs)
 (crafted-package-install-package 'consult-lsp)
+
+(crafted-package-install-package 'lsp-java)
+(add-hook 'java-mode-hook 'lsp)
 
 ;;; Lisp family languages config
 (require 'crafted-lisp)
@@ -283,7 +293,7 @@
                         (list
                          (cape-super-capf
                           (cape-capf-properties #'cider-complete-at-point :exclusive 'no)
-                          #'cape-dabbrev)
+                          (cape-capf-buster #'lsp-completion-at-point))
                           #'cape-file))))
 
 ;;; Org mode
