@@ -182,6 +182,13 @@
 (custom-set-variables
  '(lsp-completion-provider :none))
 
+;; https://github.com/minad/corfu/wiki#basic-example-configuration-with-orderless
+(defun cw/lsp-mode-setup-completion ()
+  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+        '(orderless))) ;; Configure orderless
+
+(add-hook 'lsp-completion-mode #'cw/lsp-mode-setup-completion)
+
 (setq lsp-eldoc-enable-hover nil
       lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
       lsp-signature-auto-activate nil
