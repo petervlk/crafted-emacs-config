@@ -49,8 +49,6 @@
                       '(crafted-ui-use-doom-modeline t)
                       '(crafted-startup-inhibit-splash t))
 
-(setq initial-buffer-choice #'recentf-open-files)
-
 
 ;;; Evil mode
 (require 'crafted-evil)        ; An `evil-mode` configuration
