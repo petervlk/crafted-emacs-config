@@ -65,6 +65,7 @@
 (global-set-key (kbd "C-M-u") 'universal-argument)
 (global-set-key (kbd "C-M-j") 'consult-buffer)
 (global-set-key (kbd "C-<return>") 'embark-act)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (define-key evil-motion-state-map (kbd "[ j") 'evil-jump-backward)
 (define-key evil-motion-state-map (kbd "] j") 'evil-jump-forward)
