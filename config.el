@@ -19,8 +19,7 @@
 ;; Set load path
 (add-to-list 'load-path (expand-file-name "~/.config/crafted-emacs/lisp"))
 
-;; Turn on visual line mode for text modes
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+(add-hook 'text-mode-hook (lambda () (setq mode-require-final-newline nil)))
 
 ;;; Litering
 (crafted-package-install-package 'no-littering)
