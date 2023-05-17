@@ -34,6 +34,9 @@
 ;;; User Interface
 (require 'crafted-ui)
 
+(customize-set-variable 'display-fill-column-indicator-column 100)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
 ;; Show column position in mode-line
 (column-number-mode t)
 
