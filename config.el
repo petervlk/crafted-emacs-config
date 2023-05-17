@@ -81,6 +81,7 @@
 (define-key evil-motion-state-map (kbd "] j") 'evil-jump-forward)
 
 (define-key evil-window-map (kbd "C-q") 'evil-quit)
+(define-key evil-window-map (kbd "C-b") 'bookmark-jump-other-window)
 (define-key evil-window-map (kbd "C-d") 'dired-other-window)
 (define-key evil-window-map (kbd "C-M-j") 'consult-buffer-other-window)
 
