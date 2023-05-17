@@ -372,11 +372,11 @@
   ("{" sp-wrap-curly :color blue)
 
   ("u" sp-splice-sexp :color blue)
-  ("r" sp-raise-sexp  :color blue)
+  ("r" sp-raise-sexp)
 
   ("y" sp-copy-sexp  :color blue)
   ("Y" sp-backwards-copy-sexp  :color blue)
-  ("d" sp-kill-sexp :color blue)
+  ("d" sp-kill-sexp)
   ("q" nil :color blue))
 
 (define-key smartparens-mode-map (kbd "M-s") 'smartparens-hydra/body)
