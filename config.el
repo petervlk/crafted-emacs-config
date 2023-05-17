@@ -19,6 +19,11 @@
 ;; Set load path
 (add-to-list 'load-path (expand-file-name "~/.config/crafted-emacs/lisp"))
 
+;; Add terminal clipboard support
+(crafted-package-install-package 'xclip)
+(if (not (display-graphic-p))
+    (xclip-mode 1))
+
 (add-hook 'text-mode-hook (lambda () (setq mode-require-final-newline nil)))
 
 ;;; Litering
