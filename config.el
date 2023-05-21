@@ -91,10 +91,10 @@
 (custom-set-variables
  '(tab-always-indent 'complete)
  '(corfu-auto nil)
- ;; '(corfu-separator ?\s)               ;; Orderless field separator
- ;; '(corfu-quit-at-boundary 'separator) ;; Never quit at completion boundary
- ;; '(corfu-quit-no-match nil)           ;; Never quit, even if there is no match
- ;; '(corfu-preselect-first nil)         ;; Disable candidate preselection
+ '(corfu-separator ?\s)               ;; Orderless field separator
+ '(corfu-quit-at-boundary 'separator) ;; Never quit at completion boundary
+ '(corfu-quit-no-match nil)           ;; Never quit, even if there is no match
+ '(corfu-preselect nil)         ;; Disable candidate preselection
  )
 
 (define-key minibuffer-local-map (kbd "C-d") 'embark-act)
