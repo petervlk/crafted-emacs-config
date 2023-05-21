@@ -309,7 +309,7 @@
 
 (add-hook 'lsp-completion-mode #'cw/lsp-mode-setup-completion)
 
-(setq lsp-eldoc-enable-hover nil
+(setq lsp-eldoc-enable-hover t
       lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
       lsp-signature-auto-activate nil
       lsp-headerline-breadcrumb-enable nil
