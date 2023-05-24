@@ -88,6 +88,9 @@
   "h" 'dired-up-directory
   "l" 'dired-find-file)
 
+(custom-set-variables '(dired-listing-switches "-alh --group-directories-first")
+                      '(dired-kill-when-opening-new-dired-buffer t))
+
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
 
