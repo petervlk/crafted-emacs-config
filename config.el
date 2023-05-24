@@ -43,14 +43,13 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
-;; Install Modeline
-(crafted-package-install-package 'doom-modeline)
-(doom-modeline-mode 1)
-(customize-set-variable 'doom-modeline-buffer-file-name-style 'relative-from-project)
-
 ;; Install minions
 (crafted-package-install-package 'minions)
-(add-hook 'doom-modeline-mode-hook 'minions-mode)
+(minions-mode t)
+
+;; https://emacs.stackexchange.com/questions/2338/how-can-i-display-the-parent-directory-of-the-current-file-in-the-modeline
+(setq-default mode-line-buffer-identification
+              '(:eval (abbreviate-file-name default-directory)))
 
 ;; Set config variables
 (custom-set-variables '(crafted-ui-display-line-numbers t)
