@@ -16,7 +16,7 @@
              `(default ((t (:font "JetBrains Mono Light 11"))))
              `(fixed-pitch ((t (:inherit (default)))))
              `(fixed-pitch-serif ((t (:inherit (default)))))
-             `(variable-pitch ((t (:font "Arial 18")))))))
+             `(variable-pitch ((t (:font "FreeSans 11")))))))
 
 ;;; Theme
 (setq modus-themes-italic-constructs t
