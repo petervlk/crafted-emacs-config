@@ -84,6 +84,10 @@
 (define-key evil-window-map (kbd "C-d") 'dired-other-window)
 (define-key evil-window-map (kbd "C-M-j") 'consult-buffer-other-window)
 
+(evil-collection-define-key 'normal 'dired-mode-map
+  "h" 'dired-up-directory
+  "l" 'dired-find-file)
+
 ;;; Completions and Actions
 (require 'crafted-completion)  ; selection framework based on `vertico`
 
