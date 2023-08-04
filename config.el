@@ -267,7 +267,7 @@
 (defun pv-project-override (dir)
   (let ((override (seq-some
                    (lambda (file) (locate-dominating-file dir file))
-                   '(".project.el" "deps.edn"))))
+                   '(".project.el" "deps.edn" "project.clj"))))
     (if override
       (cons 'vc override)
       nil)))
