@@ -357,10 +357,10 @@
 
 (defhydra smartparens-hydra (:hint nil)
   "
-  _w_: next        _>_: barf     _(_: wrap raound    _u_: splice    _d_: kill    _j_: down sexp    _q_: quit
-  _W_: next lvl    _<_: slurp    _[_: wrap square    _r_: raise     _y_: copy    _k_: up sexp
-  _b_: prev                      _{_: wrap curly                    _Y_: copy
-  _B_: prev lvl
+  _w_: next        _>_: barf     _(_: wrap round             _u_: splice     _d_: kill    _j_: down sexp    _q_: quit
+  _W_: next lvl    _<_: slurp    _[_: wrap square            _r_: raise      _y_: copy    _k_: up sexp      ^ ^
+  _b_: prev        ^ ^           _{_: wrap curly             ^ ^             _Y_: copy    ^ ^               ^ ^
+  _B_: prev lvl    ^ ^           _\"_: wrap double quotes
   "
   (">" sp-forward-barf-sexp)
   ("<" sp-forward-slurp-sexp)
