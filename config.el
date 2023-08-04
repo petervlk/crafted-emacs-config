@@ -441,4 +441,8 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-hook 'yaml-mode-hook 'lsp)
 
+;;;; PDF files support
+(crafted-package-install-package 'pdf-tools)
+(pdf-tools-install)
+
 ;;; config.el ends here
