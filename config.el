@@ -373,9 +373,9 @@
   ("B" sp-beginning-of-previous-sexp)
   ;; ("e" sp-end-of-next-sexp "End of Next sexp")
 
-  ("(" sp-wrap-round :color blue)
-  ("[" sp-wrap-square :color blue)
-  ("{" sp-wrap-curly :color blue)
+  ("(" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "(")) :color blue)
+  ("[" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")) :color blue)
+  ("{" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{")) :color blue)
 
   ("u" sp-splice-sexp :color blue)
   ("r" sp-raise-sexp)
