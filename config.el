@@ -28,8 +28,9 @@
 
 ;;; Litering
 (crafted-package-install-package 'no-littering)
-(setq auto-save-file-name-transforms
-      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+(custom-set-variables
+ '(auto-save-file-name-transforms `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+ '(backup-directory-alist `((".*" . ,(no-littering-expand-var-file-name "backup/")))))
 
 ;;; User Interface
 (require 'crafted-ui)
