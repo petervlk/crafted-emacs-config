@@ -301,6 +301,7 @@
 (add-hook 'clojure-mode-hook #'evil-smartparens-mode)
 (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
 (add-hook 'clojure-mode-hook 'lsp)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 
 ;; accept kebab-case words
 (add-hook 'clojure-mode-hook (lambda () (modify-syntax-entry ?- "w")))
