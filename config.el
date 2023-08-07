@@ -208,9 +208,11 @@
 
 (add-hook 'lsp-completion-mode #'cw/lsp-mode-setup-completion)
 
-(setq lsp-eldoc-enable-hover t
-      lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+(setq
+      lsp-eldoc-enable-hover nil
       lsp-signature-auto-activate nil
+      lsp-signature-render-documentation nil
+      lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
       lsp-headerline-breadcrumb-enable nil
       lsp-lens-enable t)
 
@@ -305,6 +307,10 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
 
 ;;; Cider
+
+(setq cider-eldoc-display-context-dependent-info t)
+(setq cider-eldoc-display-for-symbol-at-point t)
+
 (defun pv-cider-format-buffer ()
   (interactive)
   (and (bound-and-true-p cider-mode) (cider-format-buffer)))
