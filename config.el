@@ -138,7 +138,7 @@
 (require 'magit)
 (require 'transient)
 
-(setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+(customize-set-variable 'magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 (global-set-key (kbd "C-M-;") #'magit-status)
 
 (crafted-package-install-package 'magit-delta)
@@ -208,13 +208,13 @@
 
 (add-hook 'lsp-completion-mode #'cw/lsp-mode-setup-completion)
 
-(setq
-      lsp-eldoc-enable-hover nil
-      lsp-signature-auto-activate nil
-      lsp-signature-render-documentation nil
-      lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
-      lsp-headerline-breadcrumb-enable nil
-      lsp-lens-enable t)
+(custom-set-variables
+ '(lsp-eldoc-enable-hover nil)
+ '(lsp-signature-auto-activate nil)
+ '(lsp-signature-render-documentation nil)
+ '(lsp-enable-indentation nil) ; uncomment to use cider indentation instead of lsp
+ '(lsp-headerline-breadcrumb-enable nil)
+ '(lsp-lens-enable t))
 
 (crafted-package-install-package 'lsp-ui)
 
