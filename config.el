@@ -48,9 +48,21 @@
 (crafted-package-install-package 'minions)
 (minions-mode t)
 
-;; https://emacs.stackexchange.com/questions/2338/how-can-i-display-the-parent-directory-of-the-current-file-in-the-modeline
+(defun pv-buffer-name ()
+  "Sets the buffer name while taking current project and buffer visiting file into consideration."
+  (let ((fname (buffer-file-name))
+        (project (project-current)))
+    (cond
+     ((not fname) (buffer-name))
+     ((not project) (abbreviate-file-name fname))
+     (t (let ((project-name (file-name-nondirectory
+                             (directory-file-name
+                              (project-root project))))
+              (project-file (file-relative-name fname (project-root project))))
+          (concat project-name "/" project-file))))))
+
 (setq-default mode-line-buffer-identification
-              '(:eval (abbreviate-file-name default-directory)))
+              '(:eval (pv-buffer-name)))
 
 ;; Set config variables
 (custom-set-variables '(crafted-ui-display-line-numbers t)
