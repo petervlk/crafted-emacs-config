@@ -167,19 +167,6 @@
 ;; Make it possible to ignore risky local variables
 (advice-add 'risky-local-variable-p :override #'ignore)
 
-;; Returns the parent directory containing a .project.el file, if any,
-;; to override the standard project.el detection logic when needed.
-(defun pv-project-override (dir)
-  (let ((override (seq-some
-                   (lambda (file) (locate-dominating-file dir file))
-                   '(".project.el" "deps.edn" "project.clj"))))
-    (if override
-      (cons 'vc override)
-      nil)))
-
-(with-eval-after-load 'project
-  (add-hook 'project-find-functions #'pv-project-override))
-
 ;; Jumpt between test and impl files
 (crafted-package-install-package 'toggle-test)
 
