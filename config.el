@@ -59,10 +59,10 @@
                              (directory-file-name
                               (project-root project))))
               (project-file (file-relative-name fname (project-root project))))
-          (concat project-name "/" project-file))))))
+          (file-name-concat project-name project-file))))))
 
 (setq-default mode-line-buffer-identification
-              '(:eval (pv-buffer-name)))
+              '(:eval (propertize (pv-buffer-name) 'face 'mode-line-buffer-id)))
 
 ;; Set config variables
 (custom-set-variables '(crafted-ui-display-line-numbers t)
