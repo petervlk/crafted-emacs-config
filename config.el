@@ -64,6 +64,9 @@
 (setq-default mode-line-buffer-identification
               '(:eval (propertize (pv-buffer-name) 'face 'mode-line-buffer-id)))
 
+;; Include entire file path in title
+(setq frame-title-format '(buffer-file-name "%f" ("%b")))
+
 ;; Set config variables
 (custom-set-variables '(crafted-ui-display-line-numbers t)
                       '(crafted-ui-use-doom-modeline t)
