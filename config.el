@@ -147,14 +147,17 @@
 ;; elbow grease for embark -- end
 
 ;;; Source Control
-(require 'magit)
-(require 'transient)
+(custom-set-variables '(magit-diff-refine-hunk t)
+                      '(magit-no-confirm '(stage-all-changes
+                                           unstage-all-changes))
+                      '(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(customize-set-variable 'magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 (global-set-key (kbd "C-M-;") #'magit-status)
 
-(crafted-package-install-package 'magit-delta)
-(add-hook 'magit-mode-hook 'magit-delta-mode)
+;;; for now using magit-diff-refine-hunk instead of delta
+;;; potentially write a function to use delta inside of a single hunk in a future
+;; (crafted-package-install-package 'magit-delta)
+;; (add-hook 'magit-mode-hook 'magit-delta-mode)
 
 (crafted-package-install-package 'git-timemachine)
 
