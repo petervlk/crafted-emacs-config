@@ -350,11 +350,6 @@
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
-;;; YAML
-(crafted-package-install-package 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-hook 'yaml-mode-hook 'lsp)
-
 ;;;; PDF files support
 (crafted-package-install-package 'pdf-tools)
 (pdf-tools-install)
