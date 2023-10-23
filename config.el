@@ -293,6 +293,11 @@
 (crafted-package-install-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;;;Java
+(crafted-package-install-package 'lsp-java)
+(require 'lsp-java)
+(add-hook 'java-mode-hook #'lsp)
+
 ;;; Clojure
 (crafted-package-install-package 'cljstyle-format)
 
