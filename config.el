@@ -314,6 +314,13 @@
 (add-hook 'clojure-mode-hook (lambda () (modify-syntax-entry ?- "w")))
 (add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w")))
 
+;; https://github.com/dzer6/cljfmt-graalvm#integrate-with-emacs
+(defun pv-cljfmt-format-buffer ()
+  (when (or (eq major-mode 'clojure-mode)
+            (eq major-mode 'clojurescript-mode))
+    (shell-command-to-string (format "cljfmt fix %s" buffer-file-name))
+    (revert-buffer :ignore-auto :noconfirm)))
+
 ;;; Cider
 
 (setq cider-eldoc-display-context-dependent-info t)
